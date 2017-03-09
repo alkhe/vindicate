@@ -74,10 +74,29 @@ const justify = (words, width, justifier) => {
 	return lines
 }
 
+const wrap = (text, width) => {
+	const lines = []
+	const len = text.length
+
+	lines.push(text.substr(0, width))
+
+	let i = width
+
+	while (i < len) {
+		while (text[i] === ' ') i++
+
+		lines.push(text.substr(i, width))
+		i += width
+	}
+
+	return lines
+}
+
 module.exports = {
 	left,
 	right,
 	center,
 	stretch,
-	justify
+	justify,
+	wrap
 }
